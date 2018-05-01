@@ -26,9 +26,6 @@ import java.util.HashMap;
 public class IntroActivity extends AppCompatActivity {
     ArrayList<HashMap<String, String>> tkykPoints;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -37,11 +34,9 @@ public class IntroActivity extends AppCompatActivity {
             public void run() {
                 Intent intent = new Intent(IntroActivity.this, MainActivity.class);
                 intent.putExtra("tkykPoints", tkykPoints);
-                //인텐트 넘어가는 시간 지정해주기
-
                 startActivity(intent);
             }
-        }, 3000);
+        }, 3000); //인텐트 넘어가는 시간 지정해주기
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
@@ -49,7 +44,6 @@ public class IntroActivity extends AppCompatActivity {
         ImageView star1 = (ImageView) findViewById(R.id.star1);
         final Animation ani1 = AnimationUtils.loadAnimation(IntroActivity.this, R.anim.rotate);
 
-//        Animation anim = AnimationUtils.loadAnimation(this,R.anim.alpha_in);
         ani1.setStartOffset(2000);
         ani1.setInterpolator(AnimationUtils.loadInterpolator(this, android.R.anim.decelerate_interpolator));
 
@@ -68,10 +62,9 @@ public class IntroActivity extends AppCompatActivity {
                 }
             }
         }).start();
-
-
     }
 
+    //Parsing XML to map locations on Google map
     private ArrayList<HashMap<String,String>> threadMethod() throws XmlPullParserException, IOException {
         StringBuffer buffer = new StringBuffer();
 
@@ -103,13 +96,10 @@ public class IntroActivity extends AppCompatActivity {
 
                     if (isStartTag && placeMarkContent != null && tag.equals("name")) {
                         placeMarkContent.put("name", text);
-//                        Log.e("text name", text);
                     } else if (isStartTag && placeMarkContent != null && tag.equals("description")) {
                         placeMarkContent.put("description", text);
                     } else if (isStartTag && placeMarkContent != null && tag.equals("coordinates")){
                         placeMarkContent.put("coordinates", text);
-//                        Log.e("text coordinates", text);
-//                        Log.e("text coordinates map", placeMarkContent.toString());
                     }
                     break;
                 case XmlPullParser.END_TAG:
@@ -117,7 +107,6 @@ public class IntroActivity extends AppCompatActivity {
 
                     if(tag.equals("Placemark")){
                         searchContents.add(placeMarkContent);
-//                        Log.e("text placeMarkContent", placeMarkContent.toString());
                         placeMarkContent = null;
                     } else if(tag.equals("name") || tag.equals("description") || tag.equals("coordinates")) {
                         isStartTag = false;
@@ -126,12 +115,6 @@ public class IntroActivity extends AppCompatActivity {
             }
             eventType = xpp.next();
         }
-
-//        Log.e("XmlParser", searchContents.toString());
         return searchContents;
-
     }
-
-
-
 }

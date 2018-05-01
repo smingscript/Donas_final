@@ -6,14 +6,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-
-import com.google.android.gms.maps.SupportMapFragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -57,17 +51,17 @@ public class MainActivity extends AppCompatActivity {
         map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                findViewById(R.id.map_layout).setVisibility(View.VISIBLE);
-                findViewById(R.id.scroll).setVisibility(View.GONE);
+            findViewById(R.id.map_layout).setVisibility(View.VISIBLE);
+            findViewById(R.id.scroll).setVisibility(View.GONE);
 
-                RegionFragment mf = new RegionFragment();
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("tkykPoints", tkykPoints);
-                mf.setArguments(bundle);
+            RegionFragment mf = new RegionFragment();
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("tkykPoints", tkykPoints);
+            mf.setArguments(bundle);
 
-                FragmentTransaction fragmentTransaction = fm.beginTransaction();
-                fragmentTransaction.replace(R.id.map_layout, mf);
-                fragmentTransaction.commit();
+            FragmentTransaction fragmentTransaction = fm.beginTransaction();
+            fragmentTransaction.replace(R.id.map_layout, mf);
+            fragmentTransaction.commit();
 
             }
         });

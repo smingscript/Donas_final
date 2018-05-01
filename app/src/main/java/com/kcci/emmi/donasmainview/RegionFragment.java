@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,10 +21,8 @@ public class RegionFragment extends Fragment implements Serializable {
     HashMap<Integer, ArrayList<String>> map;
     ArrayAdapter<String> adapter2;
     ArrayList<String> dataList2;
-
     LinearLayout regionLayout;
     FrameLayout mapLayout;
-
     ArrayList<HashMap<String, String>> tkykPoints;
 
     @Override
@@ -256,7 +253,6 @@ public class RegionFragment extends Fragment implements Serializable {
     }
 
     public void changeFragment(Fragment f) {
-
         FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.map_layout, f);
         fragmentTransaction.commit();

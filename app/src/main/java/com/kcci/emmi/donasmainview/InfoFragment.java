@@ -19,10 +19,6 @@ public class InfoFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_info, null);
         tkykPoints = (ArrayList<HashMap<String, String>>) getArguments().getSerializable("tkykPoints");
 
-
-
         return view;
     }
-
-
 }
